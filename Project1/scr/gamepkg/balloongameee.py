@@ -2,6 +2,26 @@ from py_compile import main
 import tkinter as tk
 import random
 
+def run_game():
+    global score, time_left, life, game_running, balloons
+
+    score = 0
+    time_left = GAME_TIME
+    life = MAX_LIFE
+    game_running = True
+
+    balloons.clear()
+    canvas.delete("all")
+
+    score_label.config(text="Score: 0")
+    time_label.config(text=f"Time: {GAME_TIME}")
+    update_life()
+
+    restart_btn.pack_forget()
+
+    spawn_loop()
+    move_balloons()
+    update_time()
 # ----------------- ตั้งค่าเกม -----------------
 WIDTH = 600
 HEIGHT = 500
